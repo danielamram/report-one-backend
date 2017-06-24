@@ -34,7 +34,7 @@ exports.getStatus = functions.https.onRequest((req, res) => {
         let statusRes = '';
 
         snapshot.forEach((userSnapshot) => {
-            statusRes += userSnapshot.val().displayName + userSnapshot.val().phoneNumber;
+            statusRes += userSnapshot.val().phoneNumber;
         });
 
         cors(req, res, () => {
