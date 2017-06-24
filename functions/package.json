@@ -1,0 +1,10 @@
+{
+  "name": "report-one-backend",
+  "description": "Backed side of report-one, generate QR from the users statuses.",
+  "dependencies": {
+    "cors": "^2.8.1",
+    "firebase-admin": "^5.0.0",
+    "firebase-functions": "^0.5.7",
+    "qrcode": "^0.8.2"
+  }
+}
