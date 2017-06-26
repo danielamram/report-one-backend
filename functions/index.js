@@ -57,7 +57,7 @@ exports.getStatus = functions.https.onRequest((req, res) => {
         res.status(403).send('Forbidden!');
     }
 
-    var MAXCHARS = 4296;
+    var MAXCHARS = 2420;
     var MAXUSERS = (MAXCHARS - 2) / 28;
 
     var today = new Date();
@@ -95,7 +95,7 @@ exports.getStatus = functions.https.onRequest((req, res) => {
                 statusRes.push(user);
 
                 if (count > MAXUSERS * countQR) {
-                    QRCode.toDataURL(JSON.stringify(statusRes), function (err, url) {
+                    QRCode.toDataURL(JSON.stringify(statusRes), { errorCorrectionLevel: 'Q' },  function (err, url) {
                         if (err) console.log('error: ' + err);
                         QRs.push(url);
                     });
@@ -105,7 +105,7 @@ exports.getStatus = functions.https.onRequest((req, res) => {
                 }
 
                 if (count == total) {
-                    QRCode.toDataURL(JSON.stringify(statusRes), function (err, url) {
+                    QRCode.toDataURL(JSON.stringify(statusRes), { errorCorrectionLevel: 'Q' },  function (err, url) {
                         if (err) console.log('error: ' + err);
 
                         if (JSON.stringify(statusRes) != "[]")
